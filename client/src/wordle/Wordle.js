@@ -7,7 +7,7 @@ const fetch_word = async (setWord) => {
   setWord(res.word);
 };
 
-const GRID = ({ guessedWord_ }) => {
+const GRID = ({ guessedWord_, word }) => {
   const letters = [];
 
   for (let i = 0; i < 5; i++) {
@@ -17,8 +17,27 @@ const GRID = ({ guessedWord_ }) => {
   return (
     <div className="grid">
       {letters.map((currChar, index) => {
+        let color = "rgb(252, 252, 255)";
+        let tcolor = "rgb(20, 20, 20)";
+
+        if (word[index] == currChar) {
+          color = "rgb(108, 183, 86)";
+          tcolor = "rgb(255, 255, 255)";
+        } 
+        else if (word.includes(currChar) && word[index] != currChar) {
+          color = "rgb(235, 196, 84)";
+          tcolor = "rgb(255, 255, 255)";
+        }
+        else {
+            color = "rgb(50, 50, 50)";
+            tcolor = "rgb(255, 255, 255)";
+        }
         return (
-          <div className="bordered-box" key={index}>
+          <div
+            className="bordered-box"
+            style={{ backgroundColor: color, color: tcolor }}
+            key={index}
+          >
             {" "}
             {currChar}{" "}
           </div>
@@ -50,8 +69,9 @@ const Wordle = () => {
       <h2>WORDLE</h2>
 
       <div className="input-sec">
-        <input type="text" id="input-word" placeholder="Enter Word" />
+        <input type="text" id="input-word" placeholder="Word" />
         <input
+            id="input-btn"
           type="button"
           value={"Enter"}
           onClick={() => {
@@ -63,7 +83,7 @@ const Wordle = () => {
       <div className="box">
         {" "}
         {guessedWord.map((currElem, index) => {
-          return <GRID key={index} guessedWord_={currElem} />;
+          return <GRID key={index} guessedWord_={currElem} word={word} />;
         })}
       </div>
     </div>

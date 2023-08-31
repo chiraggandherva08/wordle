@@ -1,57 +1,101 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-* {
-    margin: 0;
-    padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
-    font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Poppins", sans-serif;
 }
 
-body{
-    background: white;
-    height: 100vh;
+body {
+  background: white;
+  height: 100vh;
 }
 
 #game {
-    width: calc(100vw - 200px);
-    height: 500px;
-    max-width: 600px;
+  width: calc(100vw - 200px);
+  height: 500px;
+  max-width: 600px;
 
-    border-radius: 20px;
+  border-radius: 20px;
 
-    background: #ffffff;
+  background: #ffffff;
 
-    margin: 50px auto;
+  margin: 50px auto;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
-    justify-content: flex-start;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.grid{
-    margin-top: 10px;
+.grid {
+  margin-top: 20px;
 
-    display: flex;
-    justify-content: space-evenly;
-    
-    gap: 20px;
+  display: flex;
+  justify-content: space-evenly;
+
+  gap: 20px;
 }
 
 .bordered-box {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 
-    border-style: solid;
-    border-width: 1px;
-    border-color: lightgray;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: lightgray;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    border-radius: 5px;
+  border-radius: 4px;
 
-    background: #f1f1f1;
-    color: rgb(40, 40, 40);
+  background: rgb(252, 252, 255);
+  color: rgb(40, 40, 40);
+
+  font-size: 1.3em;
+
+  font-weight: 600;
+}
+
+.input-sec {
+  margin-top: 20px;
+  display: flex;
+
+  gap: 20px;
+
+  align-items: center;
+}
+
+#input-word {
+  width: 200px;
+  padding: 5px 10px;
+
+  outline: 0;
+  border-style: none;
+  border-radius: 5px;
+
+  background: #ededed;
+
+  font-size: 20px;
+
+  letter-spacing: 20px;
+}
+
+#input-btn {
+  outline: 0;
+  border-style: none;
+  border-radius: 5px;
+
+  padding: 0px 10px;
+
+  background: #1a203f;
+  color: white;
+
+  font-size: 15px;
+  height: 30px;
+  cursor: pointer;
 }

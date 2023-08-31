@@ -1,21 +1,10 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import axios from "axios";
-
-const fetch_word = async (setWord) => {
-  const res = (await axios.get("http://localhost:8000/")).data;
-  console.log(res.word);
-  setWord(res.word);
-};
+import Wordle from "./wordle/Wordle";
 
 function App() {
-  const [word, setWord] = useState("");
-
-  useEffect(() => {
-    fetch_word(setWord);
-  }, []);
-
-  return <div className="App"></div>;
+  return <div className="App">
+    <Wordle />
+  </div>;
 }
 
 export default App;

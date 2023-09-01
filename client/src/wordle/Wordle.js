@@ -10,6 +10,8 @@ const fetch_word = async (setWord) => {
 const GRID = ({ guessedWord_, word }) => {
   const letters = [];
 
+  document.querySelector("#input-word").value = "";
+
   for (let i = 0; i < 5; i++) {
     letters.push(guessedWord_[i]);
   }
@@ -23,14 +25,12 @@ const GRID = ({ guessedWord_, word }) => {
         if (word[index] == currChar) {
           color = "rgb(108, 183, 86)";
           tcolor = "rgb(255, 255, 255)";
-        } 
-        else if (word.includes(currChar) && word[index] != currChar) {
+        } else if (word.includes(currChar) && word[index] != currChar) {
           color = "rgb(235, 196, 84)";
           tcolor = "rgb(255, 255, 255)";
-        }
-        else {
-            color = "rgb(50, 50, 50)";
-            tcolor = "rgb(255, 255, 255)";
+        } else {
+          color = "rgb(160, 160, 160)";
+          tcolor = "rgb(255, 255, 255)";
         }
         return (
           <div
@@ -69,9 +69,9 @@ const Wordle = () => {
       <h2>WORDLE</h2>
 
       <div className="input-sec">
-        <input type="text" id="input-word" placeholder="Word" />
+        <input type="text" id="input-word" placeholder="Word" maxLength="5" />
         <input
-            id="input-btn"
+          id="input-btn"
           type="button"
           value={"Enter"}
           onClick={() => {

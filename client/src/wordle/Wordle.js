@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import YouLost from "../youlost/YouLost";
 import axios from "axios";
 
 const fetch_word = async (setWord) => {
   const res = (await axios.get("http://localhost:8000/")).data;
-  console.log(res.word);
+  console.log(res.word); // remove before deployement.
   setWord(res.word);
 };
 
@@ -52,11 +53,17 @@ const Wordle = () => {
   const [guessedWord, setGuessedWords] = useState([]);
 
   const addWord = () => {
-    const word = document.querySelector("#input-word").value;
-    if (word.length == 5) {
-      const newGuessedWord = [...guessedWord, word];
+    const latest_guessed_word = document.querySelector("#input-word").value;
+
+    if (guessedWord.length > 5 && latest_guessed_word != word) {
+      const YouLost_ = document.querySelector("#you-lost-sec");
+      YouLost_.style.display = "flex";
+      return false;
+    }
+
+    else if (latest_guessed_word.length == 5) {
+      const newGuessedWord = [...guessedWord, latest_guessed_word];
       setGuessedWords(newGuessedWord);
-      console.log(newGuessedWord);
     }
   };
 
@@ -86,6 +93,8 @@ const Wordle = () => {
           return <GRID key={index} guessedWord_={currElem} word={word} />;
         })}
       </div>
+
+      <YouLost correct_word={word}></YouLost>
     </div>
   );
 };
